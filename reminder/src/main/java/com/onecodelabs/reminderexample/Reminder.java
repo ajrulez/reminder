@@ -1,12 +1,12 @@
-package com.onecodelabs.reminder;
+package com.onecodelabs.reminderexample;
 
 import android.app.Activity;
 import android.app.Application;
 
-import com.onecodelabs.reminder.bundle.ReminderBundle;
-import com.onecodelabs.reminder.callback.MyActivityLifecycleCallbacks;
-import com.onecodelabs.reminder.remindful.PreferencesRemindfulPersister;
-import com.onecodelabs.reminder.remindful.RemindfulPersister;
+import com.onecodelabs.reminderexample.bundle.ReminderBundle;
+import com.onecodelabs.reminderexample.callback.MyActivityLifecycleCallbacks;
+import com.onecodelabs.reminderexample.remindful.PreferencesRemindfulPersister;
+import com.onecodelabs.reminderexample.remindful.RemindfulPersister;
 
 public class Reminder {
 

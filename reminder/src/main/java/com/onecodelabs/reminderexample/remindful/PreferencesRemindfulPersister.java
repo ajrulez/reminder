@@ -1,10 +1,10 @@
-package com.onecodelabs.reminder.remindful;
+package com.onecodelabs.reminderexample.remindful;
 
 import android.app.Application;
 import android.content.Context;
 
-import com.onecodelabs.reminder.bundle.ReminderBundle;
-import com.onecodelabs.reminder.util.StorageUtils;
+import com.onecodelabs.reminderexample.bundle.ReminderBundle;
+import com.onecodelabs.reminderexample.util.StorageUtils;
 
 public class PreferencesRemindfulPersister implements RemindfulPersister {
 

@@ -1,4 +1,4 @@
-package com.onecodelabs.reminder.util;
+package com.onecodelabs.reminderexample.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
