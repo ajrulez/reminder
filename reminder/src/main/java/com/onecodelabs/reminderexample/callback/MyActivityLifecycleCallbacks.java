@@ -1,4 +1,4 @@
-package com.onecodelabs.reminder.callback;
+package com.onecodelabs.reminderexample.callback;
 
 import android.app.Activity;
 import android.app.Application;
