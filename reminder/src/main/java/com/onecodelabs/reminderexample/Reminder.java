@@ -5,8 +5,8 @@ import android.app.Application;
 
 import com.onecodelabs.reminderexample.bundle.ReminderBundle;
 import com.onecodelabs.reminderexample.callback.MyActivityLifecycleCallbacks;
-import com.onecodelabs.reminderexample.remindful.PreferencesRemindfulPersister;
 import com.onecodelabs.reminderexample.remindful.RemindfulPersister;
+import com.onecodelabs.reminderexample.remindful.SqliteRemindfulPersister;
 
 public class Reminder {
 
@@ -20,7 +20,10 @@ public class Reminder {
     }
 
     private static void initRemindfulPersister(Application application) {
-        remindfulPersister = PreferencesRemindfulPersister.init(application);
+        // TODO(gnardini): Add an optional way to set one persistence model or the other with a
+        // config object.
+        // remindfulPersister = PreferencesRemindfulPersister.init(application);
+        remindfulPersister = new SqliteRemindfulPersister(application);
     }
 
     public static void remind(Remindable remindable) {
