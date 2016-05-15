@@ -1,6 +1,5 @@
 package com.onecodelabs.reminderexample.remindful;
 
-import android.app.Application;
 import android.content.Context;
 
 import com.onecodelabs.reminderexample.bundle.ReminderBundle;
@@ -13,8 +12,8 @@ public class PreferencesRemindfulPersister implements RemindfulPersister {
 
     private final StorageUtils storageUtils;
 
-    public static PreferencesRemindfulPersister init(Application application) {
-        StorageUtils.init(application);
+    public static PreferencesRemindfulPersister init(Context context) {
+        StorageUtils.init(context);
         StorageUtils storageUtils = StorageUtils.begin(PREFERENCES_NAME, PREFERENCES_MODE);
         return new PreferencesRemindfulPersister(storageUtils);
     }

@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class SqlBundleHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "OneCodeLabs_Reminder";
+    public static final String DATABASE_NAME = "OneCodeLabs_Reminder";
     private static final int DATABASE_VERSION = 1;
 
     // Strings that represent names or commands used to create and update the database.
@@ -48,6 +48,7 @@ public class SqlBundleHelper extends SQLiteOpenHelper {
      * Writes a row with values |id|, |bundle| to the database.
      */
     public void write(String id, String bundle) {
+        System.out.println("SAVING OF SIZE: " + bundle.length());
         // Get writeable DB instance.
         SQLiteDatabase db = this.getWritableDatabase();
         // Write key-value pairs.
@@ -77,7 +78,7 @@ public class SqlBundleHelper extends SQLiteOpenHelper {
         if (cursor != null) {
             cursor.moveToFirst();
             // Don't try to read from the cursor if no rows were found.
-            if (cursor.getCount() > 0) {
+            if (cursor.getCount() > 0 && cursor.getColumnCount() > KEY_BUNDLE_INDEX) {
                 bundle = cursor.getString(KEY_BUNDLE_INDEX);
             }
             cursor.close();
