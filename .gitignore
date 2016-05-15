@@ -100,3 +100,5 @@ fabric.properties
 # *.iml
 # modules.xml
 
+# OSX
+.DS_Store
