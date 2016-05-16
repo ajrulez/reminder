@@ -11,7 +11,7 @@ public class PreferencesRemindfulPersister implements RemindfulPersister {
     private static final String PREFERENCES_NAME = "ReminderSharedPreferences";
     private static final int PREFERENCES_MODE = Context.MODE_PRIVATE;
 
-    private StorageUtils storageUtils;
+    private final StorageUtils storageUtils;
 
     public static PreferencesRemindfulPersister init(Application application) {
         StorageUtils.init(application);

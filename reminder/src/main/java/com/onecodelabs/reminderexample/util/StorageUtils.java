@@ -2,6 +2,7 @@ package com.onecodelabs.reminderexample.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 
 import com.google.gson.Gson;
 
@@ -32,19 +33,19 @@ public class StorageUtils {
 
     public void put(String key, Object object) {
         if (object == null) throw new IllegalArgumentException("can't save null object");
-        if (key == null || key.isEmpty()) throw new IllegalArgumentException("invalid key");
+        if (TextUtils.isEmpty(key)) throw new IllegalArgumentException("invalid key");
         editor.putString(key, GSON.toJson(object));
     }
 
-    public <T> T get(String key, Class<T> a) {
+    public <T> T get(String key, Class<T> clazz) {
         String jsonString = preferences.getString(key, null);
         if (jsonString == null) {
             return null;
         }
         try {
-            return GSON.fromJson(jsonString, a);
+            return GSON.fromJson(jsonString, clazz);
         } catch (Exception e) {
-            throw new IllegalArgumentException("Object stored with key " + key + " is not an instance of " + a.getName());
+            throw new IllegalArgumentException("Object stored with key " + key + " is not an instance of " + clazz.getName());
         }
     }
 
