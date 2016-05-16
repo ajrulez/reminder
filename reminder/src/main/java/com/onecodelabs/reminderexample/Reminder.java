@@ -18,7 +18,7 @@ public class Reminder {
     private static RemindfulPersister remindfulPersister;
 
     public static void init(Application application) {
-        init(application, ReminderConfig.getDefault(application));
+        init(application, ReminderConfig.getDefault());
     }
 
     public static void init(Application application, @NonNull ReminderConfig config) {
