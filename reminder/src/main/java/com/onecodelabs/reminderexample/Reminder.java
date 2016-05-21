@@ -3,6 +3,7 @@ package com.onecodelabs.reminderexample;
 import android.app.Activity;
 import android.app.Application;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 import com.onecodelabs.reminderexample.bundle.ReminderBundle;
 import com.onecodelabs.reminderexample.callback.MyActivityLifecycleCallbacks;
@@ -51,7 +52,13 @@ public class Reminder {
     }
 
     private static String id(Remindable remindable) {
-        return remindable.getClass().getName();
+        String suffix = "";
+        if (remindable instanceof RemindableWithId) {
+            RemindableWithId remindableWithId = (RemindableWithId) remindable;
+            String remindableId = remindableWithId.remindableId();
+            if (!TextUtils.isEmpty(remindableId)) suffix = remindableId;
+        }
+        return remindable.getClass().getName() + suffix;
     }
 
     private static class ReminderActivityLifecycleCallbacks extends MyActivityLifecycleCallbacks {
