@@ -7,4 +7,6 @@ public interface Remindable {
     void saveSnapshot(ReminderBundle snapshot);
 
     void onSnapshotAvailable(ReminderBundle snapshot);
+
+    void onSnapshotNotFound();
 }
