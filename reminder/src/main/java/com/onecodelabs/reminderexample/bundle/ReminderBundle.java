@@ -9,13 +9,13 @@ public class ReminderBundle {
     private HashMap<String, String> map;
 
     /*
-    * this variable will first (when the remindable saveSnapshot method is called) hold a timestamp
-    * and as soon as onSnapshotAvailable is about to be called, its value is updated to hold
-    * the time in milliseconds since this snapshot was saved.
+    * Holds the timestamp of this bundle's creation.
+    * It's used to implement isMillisecondsOld()
     * */
-    private long time;
+    private long createdAt;
 
     public ReminderBundle() {
+        createdAt = System.currentTimeMillis();
         map = new HashMap<>();
     }
 
@@ -28,13 +28,10 @@ public class ReminderBundle {
     }
 
     /*
-    * returns the time in milliseconds since this snapshot was saved.
+    * returns true if this snapshot was saved @param:t milliseconds ago (or more).
+    * returns false otherwise.
     * */
-    public long time() {
-        return time;
-    }
-
-    public void setTime(long time) {
-        this.time = time;
+    public boolean isMillisecondsOld(long t) {
+        return t <= (System.currentTimeMillis() - createdAt);
     }
 }

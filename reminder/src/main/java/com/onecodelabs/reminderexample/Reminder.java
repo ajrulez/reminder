@@ -44,8 +44,6 @@ public class Reminder {
         if (remindable == null) return;
         ReminderBundle snapshot = remindfulPersister.get(id(remindable));
         if (snapshot != null) {
-            long timeSinceSnapshotSave = System.currentTimeMillis() - snapshot.time();
-            snapshot.setTime(timeSinceSnapshotSave);
             remindable.onSnapshotAvailable(snapshot);
         } else {
             remindable.onSnapshotNotFound();
@@ -56,7 +54,6 @@ public class Reminder {
         if (remindable == null) return;
         ReminderBundle snapshot = new ReminderBundle();
         remindable.saveSnapshot(snapshot);
-        snapshot.setTime(System.currentTimeMillis());
         remindfulPersister.save(id(remindable), snapshot);
     }
 
@@ -77,7 +74,6 @@ public class Reminder {
                 Remindable remindable = (Remindable) activity;
                 ReminderBundle snapshot = new ReminderBundle();
                 remindable.saveSnapshot(snapshot);
-                snapshot.setTime(System.currentTimeMillis());
                 remindfulPersister.save(id(remindable), snapshot);
             }
         }

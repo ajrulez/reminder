@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements Remindable {
         adapter.appendBottomAll(questions);
 
         //Check how old the snapshot is. Fetch new content if it's 8 hours old or more.
-        if (snapshot.time() > 8 * MILLIS_HOUR) {
+        if (snapshot.isMillisecondsOld(8 * MILLIS_HOUR)) {
             fetchQuestions();
         }
     }
