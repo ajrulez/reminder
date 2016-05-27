@@ -1,8 +1,7 @@
 package com.onecodelabs.reminderexample.ui.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.onecodelabs.reminderexample.R;
@@ -23,6 +22,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity implements Remindable {
 
     private static final String SNAPSHOT_DATASET = "DATASET";
+    private static final long MILLIS_HOUR = 1000 * 60 * 60;
 
     private ListView listView;
     private QuestionAdapter adapter;
@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements Remindable {
         setUi();
         init();
         Reminder.remind(this);
-        populate();
     }
 
     private void setUi() {
@@ -44,10 +43,6 @@ public class MainActivity extends AppCompatActivity implements Remindable {
     private void init() {
         adapter = new QuestionAdapter(this);
         listView.setAdapter(adapter);
-    }
-
-    private void populate() {
-        fetchQuestions();
     }
 
     private void fetchQuestions() {
@@ -84,5 +79,15 @@ public class MainActivity extends AppCompatActivity implements Remindable {
         List<Question> questions = snapshot.get(SNAPSHOT_DATASET, Questions.class).getQuestions();
         adapter.clear();
         adapter.appendBottomAll(questions);
+
+        //Check how old the snapshot is. Fetch new content if it's 8 hours old or more.
+        if (snapshot.isMillisecondsOld(8 * MILLIS_HOUR)) {
+            fetchQuestions();
+        }
+    }
+
+    @Override
+    public void onSnapshotNotFound() {
+        fetchQuestions();
     }
 }

@@ -29,23 +29,29 @@ public class Reminder {
 
     private static void initRemindfulPersister(
             Application application,
-            @NonNull  ReminderConfig config) {
+            @NonNull ReminderConfig config) {
         switch (config.getPersistenceMode()) {
             case SHARED_PREFERENCES:
                 remindfulPersister = PreferencesRemindfulPersister.init(application);
                 break;
             case SQLITE:
                 remindfulPersister = new SqliteRemindfulPersister(application);
-            break;
+                break;
         }
     }
 
     public static void remind(Remindable remindable) {
+        if (remindable == null) return;
         ReminderBundle snapshot = remindfulPersister.get(id(remindable));
-        if (snapshot != null) remindable.onSnapshotAvailable(snapshot);
+        if (snapshot != null) {
+            remindable.onSnapshotAvailable(snapshot);
+        } else {
+            remindable.onSnapshotNotFound();
+        }
     }
 
     public static void save(Remindable remindable) {
+        if (remindable == null) return;
         ReminderBundle snapshot = new ReminderBundle();
         remindable.saveSnapshot(snapshot);
         remindfulPersister.save(id(remindable), snapshot);
