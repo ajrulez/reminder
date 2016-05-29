@@ -1,6 +1,6 @@
-package com.onecodelabs.reminderexample.bundle;
+package com.onecodelabs.reminder.bundle;
 
-import com.onecodelabs.reminderexample.util.JsonUtils;
+import com.onecodelabs.reminder.util.JsonUtils;
 
 import java.util.HashMap;
 

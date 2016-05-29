@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
+import com.onecodelabs.reminder.Remindable;
+import com.onecodelabs.reminder.Reminder;
+import com.onecodelabs.reminder.bundle.ReminderBundle;
 import com.onecodelabs.reminderexample.R;
-import com.onecodelabs.reminderexample.Remindable;
-import com.onecodelabs.reminderexample.Reminder;
 import com.onecodelabs.reminderexample.ReminderApplication;
 import com.onecodelabs.reminderexample.adapter.QuestionAdapter;
-import com.onecodelabs.reminderexample.bundle.ReminderBundle;
 import com.onecodelabs.reminderexample.model.Question;
 import com.onecodelabs.reminderexample.model.Questions;
 

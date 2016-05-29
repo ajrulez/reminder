@@ -2,6 +2,7 @@ package com.onecodelabs.reminderexample;
 
 import android.app.Application;
 
+import com.onecodelabs.reminder.Reminder;
 import com.onecodelabs.reminderexample.retrofit.QuestionService;
 
 import retrofit2.Retrofit;

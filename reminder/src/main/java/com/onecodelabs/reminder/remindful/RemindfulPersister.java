@@ -1,6 +1,6 @@
-package com.onecodelabs.reminderexample.remindful;
+package com.onecodelabs.reminder.remindful;
 
-import com.onecodelabs.reminderexample.bundle.ReminderBundle;
+import com.onecodelabs.reminder.bundle.ReminderBundle;
 
 public interface RemindfulPersister {
 

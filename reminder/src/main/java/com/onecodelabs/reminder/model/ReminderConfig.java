@@ -1,4 +1,4 @@
-package com.onecodelabs.reminderexample.model;
+package com.onecodelabs.reminder.model;
 
 /**
  * Object that can be used to configure Reminder options at startup (usually in an Application

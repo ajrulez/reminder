@@ -1,10 +1,10 @@
-package com.onecodelabs.reminderexample.remindful;
+package com.onecodelabs.reminder.remindful;
 
 import android.content.Context;
 
 import com.google.gson.Gson;
-import com.onecodelabs.reminderexample.bundle.ReminderBundle;
-import com.onecodelabs.reminderexample.helper.SqlBundleHelper;
+import com.onecodelabs.reminder.bundle.ReminderBundle;
+import com.onecodelabs.reminder.helper.SqlBundleHelper;
 
 /**
  * Implementation of {@link RemindfulPersister} that saves and retrieves bundles from a SQLite DB.

@@ -1,4 +1,4 @@
-package com.onecodelabs.reminderexample.util;
+package com.onecodelabs.reminder.util;
 
 import com.google.gson.Gson;
 
