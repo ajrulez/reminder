@@ -7,7 +7,7 @@ package com.onecodelabs.reminder.model;
 public class ReminderConfig {
 
     private static final PersistenceMode DEFAULT_PERSISTENCE_MODE =
-            PersistenceMode.SHARED_PREFERENCES;
+            PersistenceMode.SQLITE;
 
     private final PersistenceMode persistenceMode;
 

@@ -11,6 +11,8 @@ import com.onecodelabs.reminder.model.ReminderConfig;
 import com.onecodelabs.reminder.remindful.PreferencesRemindfulPersister;
 import com.onecodelabs.reminder.remindful.RemindfulPersister;
 import com.onecodelabs.reminder.remindful.SqliteRemindfulPersister;
+import com.onecodelabs.reminder.task.RemindTask;
+import com.onecodelabs.reminder.task.SaveTask;
 
 public class Reminder {
 
@@ -42,22 +44,17 @@ public class Reminder {
 
     public static void remind(Remindable remindable) {
         if (remindable == null) return;
-        ReminderBundle snapshot = remindfulPersister.get(id(remindable));
-        if (snapshot != null) {
-            remindable.onSnapshotAvailable(snapshot);
-        } else {
-            remindable.onSnapshotNotFound();
-        }
+        new RemindTask(remindable, remindfulPersister).execute();
     }
 
     public static void save(Remindable remindable) {
         if (remindable == null) return;
         ReminderBundle snapshot = new ReminderBundle();
         remindable.saveSnapshot(snapshot);
-        remindfulPersister.save(id(remindable), snapshot);
+        new SaveTask(remindable, snapshot, remindfulPersister).execute();
     }
 
-    private static String id(Remindable remindable) {
+    public static String id(Remindable remindable) {
         String suffix = "";
         if (remindable instanceof RemindableWithId) {
             RemindableWithId remindableWithId = (RemindableWithId) remindable;
@@ -74,7 +71,7 @@ public class Reminder {
                 Remindable remindable = (Remindable) activity;
                 ReminderBundle snapshot = new ReminderBundle();
                 remindable.saveSnapshot(snapshot);
-                remindfulPersister.save(id(remindable), snapshot);
+                new SaveTask(remindable, snapshot, remindfulPersister).execute();
             }
         }
     }
