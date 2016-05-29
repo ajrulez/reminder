@@ -1,4 +1,4 @@
-package com.onecodelabs.reminderexample.helper;
+package com.onecodelabs.reminder.helper;
 
 import android.content.ContentValues;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.onecodelabs.reminderexample;
+package com.onecodelabs.reminder;
 
 public interface RemindableWithId extends Remindable {
 

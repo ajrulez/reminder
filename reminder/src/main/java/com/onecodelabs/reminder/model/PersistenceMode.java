@@ -1,4 +1,4 @@
-package com.onecodelabs.reminderexample.model;
+package com.onecodelabs.reminder.model;
 
 public enum PersistenceMode {
 
