@@ -1,5 +1,5 @@
 # reminder
-this android library lets you persist the state of your views to recover them later in order to display old data until fresh data arrives
+This android library lets you persist the state of your views to recover them later in order to display old data until fresh data arrives.
 
 Usage
 --------
@@ -26,39 +26,39 @@ public class MainActivity extends AppCompatActivity implements Remindable {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ...
-        //This call results in either a call to onSnapshotAvailable() or onSnapshotNotFound()
+        // This call results in either a call to onSnapshotAvailable() or onSnapshotNotFound().
         Reminder.remind(this);
     }
 
     @Override
     public void saveSnapshot(ReminderBundle snapshot) {
-        //Save the current state of this Remindable into the snapshot.
-        //the snapshot is used as follows: snapshot.put(KEY, object);
-        //Information inside ReminderBundle is saved as key-value pairs
-        //This method will be called automatically (if you are an Activity) by the 
-        //time your Activity runs onStop().
-        //In case your Remindable is not an Activity, an explicit call to 
-        //Reminder.save(this) should be made by the time the Remindable is about
-        //to be stopped/destroyed.
+        // Save the current state of this Remindable into the snapshot.
+        // The snapshot is used as follows: snapshot.put(KEY, object);
+        // Information inside ReminderBundle is saved as key-value pairs.
+        // This method will be called automatically (if this is an Activity) by the 
+        // time onStop() is called.
+        // In case your Remindable is not an Activity, an explicit call to 
+        // Reminder.save(this) should be made by the time the Remindable is about
+        // to be stopped/destroyed.
     }
 
     @Override
     public void onSnapshotAvailable(ReminderBundle snapshot) {
-        //A snapshot for this Remindable is available.
-        //the snapshot is used as follows: snapshot.get(KEY, clazz).
-        //KEY is a String and clazz the Class<> instance of that particular object.
-        //snapshot.isMillisecondsOld(N) returns true if the snapshot is at
-        //least N milliseconds old.
+        // A snapshot for this Remindable is available.
+        // The snapshot is used as follows: snapshot.get(KEY, clazz).
+        // KEY is a String and clazz the Class<> instance of that particular object.
+        // snapshot.isMillisecondsOld(N) returns true if the snapshot is at
+        // least N milliseconds old.
         
-        //This snapshot can be used to populate this Remindable and
-        //decide according to some criteria (e.g: snapshot.isMillisecondsOld(TIME_LIMIT))
-        //if newer data should be fetched
+        // This snapshot can be used to populate this Remindable and
+        // decide according to some criteria (e.g: snapshot.isMillisecondsOld(TIME_LIMIT))
+        // if newer data should be fetched
     }
 
     @Override
     public void onSnapshotNotFound() {
-        //No snapshot was available for this Remindable.
-        //Time to fetch new data!
+        // No snapshot was available for this Remindable.
+        // Time to fetch new data!
     }
 }
 
@@ -74,35 +74,35 @@ public class ItemDetailFragment extends Fragment implements RemindableWithId {
     @Override
     public void onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ...
-        //This call results in either a call to onSnapshotAvailable() or onSnapshotNotFound()
+        // This call results in either a call to onSnapshotAvailable() or onSnapshotNotFound().
         Reminder.remind(this);
     }
     
     @Override
     public String remindableId() {
-        //return something that identifies this item
+        // return something that identifies this item.
     }
     
     @Override
     public void onStop() {
-        //as this is not an Activity, an explicit call to Reminder.save(this) must be made
+        // Since this is not an Activity, an explicit call to Reminder.save(this) must be made.
         Reminder.save(this);
         super.onStop();
     }
 
     @Override
     public void saveSnapshot(ReminderBundle snapshot) {
-        //same as before
+        // Same as before.
     }
 
     @Override
     public void onSnapshotAvailable(ReminderBundle snapshot) {
-        //same as before
+        // Same as before.
     }
 
     @Override
     public void onSnapshotNotFound() {
-        //same as before
+        // Same as before.
     }
 }
 
@@ -145,6 +145,8 @@ Add the Gradle dependency:
 		compile 'com.github.OneCodeLabs:reminder:x.y.z@aar'
 	}
 ```
+
+### License
 
     The MIT License (MIT)
     
