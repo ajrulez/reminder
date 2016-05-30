@@ -33,4 +33,11 @@ public class PreferencesRemindfulPersister implements RemindfulPersister {
     public ReminderBundle get(String id) {
         return storageUtils.get(id, ReminderBundle.class);
     }
+
+    @Override
+    public void deleteAll() {
+        storageUtils.clear();
+        storageUtils.commit();
+    }
+
 }

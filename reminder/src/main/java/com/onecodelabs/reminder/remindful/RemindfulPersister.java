@@ -7,4 +7,7 @@ public interface RemindfulPersister {
     void save(String id, ReminderBundle bundle);
 
     ReminderBundle get(String id);
+
+    void deleteAll();
+
 }

@@ -85,4 +85,9 @@ public class SqlBundleHelper extends SQLiteOpenHelper {
         return bundle;
     }
 
+    public void deleteAll() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_BUNDLES, null, null);
+    }
+
 }

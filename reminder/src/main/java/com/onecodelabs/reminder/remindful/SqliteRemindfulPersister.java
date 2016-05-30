@@ -34,4 +34,9 @@ public class SqliteRemindfulPersister implements RemindfulPersister {
         return GSON.fromJson(bundle, ReminderBundle.class);
     }
 
+    @Override
+    public void deleteAll() {
+        sqlBundleHelper.deleteAll();
+    }
+
 }
