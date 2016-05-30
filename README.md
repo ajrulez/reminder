@@ -127,6 +127,23 @@ public class MyApplication extends Application {
 
 ```
 
+### Data clearing
+
+If you made an update to your data model or want to delete the saved information for whatever reason, there's a simple way to do so:
+
+```java
+public class MyApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Reminder.init(this);
+        ...
+        Reminder.deleteAll();
+    }
+}
+
+```
+
 Download
 --------
 Add the JitPack repository to your root build.gradle:
