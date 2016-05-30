@@ -11,6 +11,7 @@ import com.onecodelabs.reminder.model.ReminderConfig;
 import com.onecodelabs.reminder.remindful.PreferencesRemindfulPersister;
 import com.onecodelabs.reminder.remindful.RemindfulPersister;
 import com.onecodelabs.reminder.remindful.SqliteRemindfulPersister;
+import com.onecodelabs.reminder.task.DeleteTask;
 import com.onecodelabs.reminder.task.RemindTask;
 import com.onecodelabs.reminder.task.SaveTask;
 
@@ -62,6 +63,10 @@ public class Reminder {
             if (!TextUtils.isEmpty(remindableId)) suffix = remindableId;
         }
         return remindable.getClass().getName() + suffix;
+    }
+
+    public static void deleteAll() {
+        new DeleteTask(remindfulPersister).execute();
     }
 
     private static class ReminderActivityLifecycleCallbacks extends MyActivityLifecycleCallbacks {

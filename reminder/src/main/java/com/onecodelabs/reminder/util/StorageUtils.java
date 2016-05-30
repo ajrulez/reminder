@@ -52,4 +52,9 @@ public class StorageUtils {
     public void commit() {
         editor.commit();
     }
+
+    public void clear() {
+        editor.clear();
+    }
+
 }
